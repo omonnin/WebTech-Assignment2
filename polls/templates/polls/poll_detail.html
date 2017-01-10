@@ -1,0 +1,18 @@
+{% extends 'polls/base.html' %}
+
+{% block content %}
+	<div class="col-md-12 col-sm-12"><h1>{{ poll.title }}</h1></div>
+	<div class="col-md-12 col-sm-12">Created on {{ poll.published_date }} by {{ poll.author }}</div>
+	{% if user.is_authenticated %}
+	<div class="col-md-12 col-sm-12">
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+	<form method="POST" class="post-form">{% csrf_token %}
+		{% for answer in poll.answers.all %}
+			<input type="radio" name="answer" id="answer{{ forloop.counter }}" value="{{ answer.id }}" />
+			<label for="answer{{ forloop.counter }}"> {{ answer.description }} : votes {{ answer.votes }}</label><br />
+		{% endfor %}
+	<button type="submit" class="save btn btn-default">Vote</button>
+	</div>
+	{%endif %}
+	</form>
+{% endblock %}

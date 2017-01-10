@@ -1,0 +1,9 @@
+.page-header {
+    background-color: #009688;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}
+.page-header h1 {
+	color: #ffffff;
+	font-size: 36pt;
+}

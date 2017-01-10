@@ -1,0 +1,25 @@
+{% load staticfiles %}
+<html>
+	<head>
+	<title>Poll Web App</title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="{% static 'css/polls.css' %}">
+	</head>
+	<body>
+		<div class="page-header">
+			<h1>Poll Web App</h1>
+			{% if user.is_authenticated %}
+			<a href="{% url 'add_poll' %}" class="top-menu pull-right"><b style="color:white">New Poll </b><span class="glyphicon glyphicon-plus" style="color:white"></span></a>
+			{% else %}
+			<a href="{% url 'login' %}" class="top-menu pull-right"><span class="glyphicon glyphicon-lock"></span></a>
+			{% endif %}
+		</div>
+		<div class="container">
+			<div class="row">
+			{% block content %}
+			{% endblock %}
+			</div>
+		</div>
+	</body>
+</html>
